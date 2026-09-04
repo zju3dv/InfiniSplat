@@ -2,7 +2,7 @@
 
 <h1>🌌 InfiniSplat: Implicit Gaussian Decoding for Large-Baseline Monocular View Synthesis</h1>
 
-<p align="center"><strong>Accepted to SIGGRAPH Asia 2026 (Journal Track)</strong></p>
+<p align="center"><strong>SIGGRAPH Asia 2026 (ACM Transactions on Graphics)</strong></p>
 
 <div align="center">
   <a href="https://zju3dv.github.io/InfiniSplat">
