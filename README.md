@@ -115,9 +115,7 @@ License: [MIT-style Commercial Registration License](LICENSE)
 
 Free for research, education, personal use, and internal R&D. Commercial product/service use is free but requires prior registration.
 
-**Commercial use registration:** [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSdV7s51IoSHd2f9ZW0B4Z948cdr8SHute9T04fC6rR6VCIdqw/viewform)
-
-Third-party components remain subject to their respective licenses.
+**Commercial use registration:** [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSff5QjjANlJ2hnXYqBSAzKWxEM58gIxPLh17-t3j3-MqO1a5w/viewform)
 
 ## 🙏 Acknowledgments
 
