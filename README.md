@@ -109,6 +109,16 @@ Open `http://127.0.0.1:7860` in a browser. The demo reuses `checkpoints/infinisp
 
 The hosted version is available on the [Hugging Face Space](https://huggingface.co/spaces/PLUS-WAVE/InfiniSplat).
 
+## 📄 License and Commercial Use
+
+License: [MIT-style Commercial Registration License](LICENSE)
+
+Free for research, education, personal use, and internal R&D. Commercial product/service use is free but requires prior registration.
+
+**Commercial use registration:** [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSdV7s51IoSHd2f9ZW0B4Z948cdr8SHute9T04fC6rR6VCIdqw/viewform)
+
+Third-party components remain subject to their respective licenses.
+
 ## 🙏 Acknowledgments
 
 We sincerely thank the authors of [DINOv3](https://github.com/facebookresearch/dinov3), [Depth Pro](https://github.com/apple/ml-depth-pro), [InfiniDepth](https://github.com/zju3dv/InfiniDepth), and [gsplat](https://github.com/nerfstudio-project/gsplat) for their excellent work. InfiniSplat is built on top of these projects.
