@@ -109,13 +109,15 @@ Open `http://127.0.0.1:7860` in a browser. The demo reuses `checkpoints/infinisp
 
 The hosted version is available on the [Hugging Face Space](https://huggingface.co/spaces/PLUS-WAVE/InfiniSplat).
 
-## 📄 License and Commercial Use
+## 📄 License and Project Use
 
-License: [MIT-style Commercial Registration License](LICENSE)
+License: [Project Registration License (PRL) v1.0](LICENSE)
 
-Free for research, education, personal use, and internal R&D. Commercial product/service use is free but requires prior registration.
+Use solely for academic research, education, evaluation, or personal purposes is free and does not require registration. Research results and publications may be published without registration.
 
-**Commercial use registration:** [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSff5QjjANlJ2hnXYqBSAzKWxEM58gIxPLh17-t3j3-MqO1a5w/viewform)
+Project use by companies, universities, or other organizations is free but requires prior registration, including non-commercial projects, internal R&D, testing, deployment, and production. Complete and accurate registration automatically grants permission; no approval or fee is required. Register each materially distinct project once.
+
+**Project use registration and Word template:** [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSff5QjjANlJ2hnXYqBSAzKWxEM58gIxPLh17-t3j3-MqO1a5w/viewform)
 
 ## 🙏 Acknowledgments
 
