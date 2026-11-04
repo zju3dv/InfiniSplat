@@ -14,7 +14,7 @@
   <a href="https://zju3dv.github.io/InfiniSplat/#visualization">
     <img src="https://img.shields.io/badge/Gallery-Visualization-green?logo=googlephotos&logoColor=white">
   </a>
-  <a href="https://huggingface.co/spaces/PLUS-WAVE/InfiniSplat">
+  <a href="https://huggingface.co/spaces/akhaliq/InfiniSplat">
     <img src="https://img.shields.io/badge/HuggingFace-Demo-yellow?logo=huggingface&logoColor=yellow">
   </a>
 </div>
@@ -109,7 +109,7 @@ python demo.py
 
 Open `http://127.0.0.1:7860` in a browser. The demo reuses `checkpoints/infinisplat_rgb.ckpt` when available and otherwise downloads the released RGB checkpoint from `PLUS-WAVE/InfiniSplat`. Set `INFINISPLAT_CHECKPOINT` to use a checkpoint at another path.
 
-The hosted version is available on the [Hugging Face Space](https://huggingface.co/spaces/PLUS-WAVE/InfiniSplat).
+The hosted version is available on the [Hugging Face Space](https://huggingface.co/spaces/akhaliq/InfiniSplat).
 
 ## 📄 License and Project Use
 

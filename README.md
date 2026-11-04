@@ -11,7 +11,7 @@
 | | [InfiniSplat v2 · Multi-view](#infinisplat-v2) | [InfiniSplat v1 · Single image / LiDAR](#infinisplat-v1) |
 | --- | --- | --- |
 | Input | Multiple images, with or without camera poses | One RGB image, optionally guided by LiDAR depth |
-| Explore | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/PLUS-WAVE/InfiniSplat) |
+| Explore | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/akhaliq/InfiniSplat) |
 
 ---
 
@@ -82,7 +82,7 @@ InfiniSplat v2 reconstructs 3D Gaussian scenes from multiple images, with or wit
   <a href="https://zju3dv.github.io/InfiniSplat/#visualization">
     <img src="https://img.shields.io/badge/Gallery-green?logo=googlephotos&logoColor=white">
   </a>
-  <a href="https://huggingface.co/spaces/PLUS-WAVE/InfiniSplat">
+  <a href="https://huggingface.co/spaces/akhaliq/InfiniSplat">
     <img src="https://img.shields.io/badge/Demo-yellow?logo=huggingface&logoColor=white">
   </a>
 </div>
