@@ -4,9 +4,9 @@ InfiniSplat v2 includes adapted utility components and uses external dependencie
 Their sources and accompanying notices are listed below.
 
 - `decoder.py`: Gaussian feature decoding, DPT-style fusion blocks and
-  positional-grid utilities adapted from WorldGS / WorldMirror-derived code.
+  positional-grid utilities.
 - `geometry.py`: camera normalization, alignment, point-radius normalization
-  and depth unprojection adapted from WorldGS / WorldMirror-derived code.
+  and depth unprojection.
 - `swiglu.py`: the PyTorch SwiGLU implementation used by the DA3 backbone.
 
 Component licenses and attribution notices are retained in `License.txt` and
