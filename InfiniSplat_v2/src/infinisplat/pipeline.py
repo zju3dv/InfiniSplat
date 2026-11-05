@@ -135,7 +135,7 @@ class Pipeline:
              pose_mode=pose_mode,
              inputs=records,space='rdnorm_first_camera_relative',stats=result['stats'],
              record_class='diagnostic',max_gaussians=0,
-             note='Interactive reconstruction; not a formal benchmark acceptance record.')
+             note='Interactive reconstruction metadata.')
         if panorama_shared_center:
             result['metadata']['panorama'] = dict(
                 scale_status='non_identifiable', translation_scale=None,

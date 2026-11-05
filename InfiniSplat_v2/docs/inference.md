@@ -84,7 +84,7 @@ threshold. There is no export count cap. Camera output intrinsics are in
 **processed-image pixels**; output camera bundles must not be reused directly as
 original-image `--cameras`. The prepass and effective scene poses use different gauges.
 
-These reconstruction records are diagnostic outputs, not benchmark acceptance reports.
+`result.json` records input hashes, pose mode, coordinate space and Gaussian statistics.
 
 HTML conversion is integrated into the CLI and `export_ply(..., html=True)`.
 It runs `splat-transform -w INPUT.ply -H 0 -E SETTINGS.json OUTPUT.html` with
