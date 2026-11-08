@@ -4,14 +4,66 @@
 
 <p><strong>From images to 3D Gaussian scenes</strong></p>
 
-<p>Feed-forward reconstruction for novel-view rendering. Explore multi-view reconstruction (v2) or single-image reconstruction with optional LiDAR depth (v1).</p>
+<p>Feed-forward reconstruction for novel-view rendering. Explore reconstruction across arbitrary scenes with SplatAnything (v3), multi-view reconstruction (v2), or single-image reconstruction with optional LiDAR depth (v1).</p>
 
 </div>
 
-| | [InfiniSplat v2 · Multi-view](#infinisplat-v2) | [InfiniSplat v1 · Single image / LiDAR](#infinisplat-v1) |
-| --- | --- | --- |
-| Input | Multiple images, with or without camera poses | One RGB image, optionally guided by LiDAR depth |
-| Explore | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/akhaliq/InfiniSplat) |
+| | [SplatAnything · InfiniSplat v3](#infinisplat-v3) | [InfiniSplat v2 · Multi-view](#infinisplat-v2) | [InfiniSplat v1 · Single image / LiDAR](#infinisplat-v1) |
+| --- | --- | --- | --- |
+| Input | Multiple images across objects, indoor, street, and aerial scenes, with or without camera poses | Multiple images, with or without camera poses | One RGB image, optionally guided by LiDAR depth |
+| Explore | [Code and usage](https://github.com/zju3dv/SplatAnything) · [Project page](https://zju3dv.github.io/SplatAnything/) | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/akhaliq/InfiniSplat) |
+
+---
+
+<a name="infinisplat-v3"></a>
+
+<div align="center">
+
+<h2>🌐 SplatAnything (InfiniSplat v3): Gaussian Spacing Normalization<br>for Feed-Forward 3DGS across Arbitrary Scenes</h2>
+
+<div align="center">
+  <a href="https://zju3dv.github.io/SplatAnything/">
+    <img src="https://img.shields.io/badge/Project-red?logo=googlechrome&logoColor=white" alt="SplatAnything project page">
+  </a>
+  <a href="https://arxiv.org/html/2611.08264">
+    <img src="https://img.shields.io/badge/Paper-blue?logo=arxiv&logoColor=white" alt="SplatAnything paper on arXiv">
+  </a>
+  <a href="https://github.com/zju3dv/SplatAnything">
+    <img src="https://img.shields.io/badge/Code-black?logo=github&logoColor=white" alt="SplatAnything source code">
+  </a>
+  <a href="https://huggingface.co/ritianyu/SplatAnything">
+    <img src="https://img.shields.io/badge/Weights-yellow?logo=huggingface&logoColor=white" alt="SplatAnything weights">
+  </a>
+</div>
+
+<p>
+  <a href="https://ritianyu.github.io/">Hao Yu<sup>1,2</sup></a> ·
+  <a href="https://zhenwwang.github.io/">Zhenwei Wang<sup>2</sup></a> ·
+  <a href="https://github.com/Edisoneh">Yongzhen Hu<sup>1</sup></a> ·
+  Yuning Gong<sup>2</sup> · Junta Wu<sup>2</sup><br>
+  <a href="https://xzhou.me/">Xiaowei Zhou<sup>1</sup></a> ·
+  <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao<sup>1</sup></a> ·
+  <a href="https://tengfei-wang.github.io/">Tengfei Wang<sup>2,†</sup></a> ·
+  <a href="https://openreview.net/profile?id=~Chunchao_Guo1">Chunchao Guo<sup>2,†</sup></a> ·
+  <a href="https://pengsida.net/">Sida Peng<sup>1,3</sup></a>
+</p>
+
+<p><sup>1</sup> Zhejiang University · <sup>2</sup> Tencent Hunyuan · <sup>3</sup> Causa Robotics</p>
+<p><sup>†</sup> Corresponding authors.</p>
+
+</div>
+
+<div align="center">
+
+<a href="https://zju3dv.github.io/SplatAnything/#demo"><img src="https://raw.githubusercontent.com/zju3dv/SplatAnything/4daa26e090968709e63fe47f4b5c59c76fda213e/assets/readme/demo.gif" alt="SplatAnything reconstructions of objects, indoor rooms, street scenes, and aerial views" width="90%" /></a>
+
+</div>
+
+SplatAnything (InfiniSplat v3) reconstructs 3D Gaussian scenes from multiple images across objects, indoor rooms, street scenes, and aerial views, with or without camera poses. Gaussian spacing normalization enables one model to work across arbitrary scenes. It also supports calibrated multi-camera rigs and 360° panorama reconstruction.
+
+[Code and usage](https://github.com/zju3dv/SplatAnything) · [Installation](https://github.com/zju3dv/SplatAnything#installation) · [Inference guide](https://github.com/zju3dv/SplatAnything/blob/main/docs/inference.md) · [Camera and panorama preparation](https://github.com/zju3dv/SplatAnything/blob/main/prepare_data.md) · [Citation](https://github.com/zju3dv/SplatAnything#citation)
+
+`InfiniSplat_v3` links to the [SplatAnything repository](https://github.com/zju3dv/SplatAnything) as a Git submodule; its source code is maintained there.
 
 ---
 
@@ -118,7 +170,16 @@ InfiniSplat v1 reconstructs 3D Gaussian scenes from a single RGB image, optional
 
 ## Getting started
 
-From the repository root, run `cd InfiniSplat_v2` for multi-view reconstruction or `cd InfiniSplat_v1` for single-image / LiDAR-guided reconstruction, then follow that version's installation guide. Install each version in its own Python environment; their dependencies and weights differ.
+For SplatAnything (v3), initialize the submodule from the repository root, then follow the [SplatAnything installation guide](https://github.com/zju3dv/SplatAnything#installation):
+
+```bash
+git submodule update --init InfiniSplat_v3
+cd InfiniSplat_v3
+```
+
+The submodule records a specific SplatAnything commit. You can also clone [SplatAnything](https://github.com/zju3dv/SplatAnything) directly to work with its latest code.
+
+For v2, run `cd InfiniSplat_v2`; for v1, run `cd InfiniSplat_v1`. Follow the selected version's installation guide. Install each version in its own Python environment; their dependencies and weights differ.
 
 ## License and Project Use
 
@@ -131,11 +192,11 @@ Project use by companies, universities, or other organizations is free but requi
 **Project use registration and Word template:** [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSff5QjjANlJ2hnXYqBSAzKWxEM58gIxPLh17-t3j3-MqO1a5w/viewform)
 
 
-V1 and v2 share the project license above. Third-party components retain their respective licenses and notices; see [v2 component provenance](InfiniSplat_v2/THIRD_PARTY.md).
+V1 and v2 share the project license above. For SplatAnything (v3), refer to the [SplatAnything repository](https://github.com/zju3dv/SplatAnything) for its license and usage terms. Third-party components retain their respective licenses and notices; see [v2 component provenance](InfiniSplat_v2/THIRD_PARTY.md).
 
 ## Acknowledgments
 
-See the [v1 acknowledgments](InfiniSplat_v1/README.md#-acknowledgments) and [v2 acknowledgments](InfiniSplat_v2/README.md#acknowledgments).
+See the [v1 acknowledgments](InfiniSplat_v1/README.md#-acknowledgments), [v2 acknowledgments](InfiniSplat_v2/README.md#acknowledgments), and [SplatAnything (v3) acknowledgments](https://github.com/zju3dv/SplatAnything#acknowledgements).
 
 ### Panorama to 3DGS (v2)
 
