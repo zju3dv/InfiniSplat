@@ -4,14 +4,14 @@
 
 <p><strong>From images to 3D Gaussian scenes</strong></p>
 
-<p>Feed-forward reconstruction for novel-view rendering. Explore reconstruction across arbitrary scenes with SplatAnything (v3), multi-view reconstruction (v2), or single-image reconstruction with optional LiDAR depth (v1).</p>
+<p>Feed-forward 3DGS reconstruction for novel-view rendering, from single view reconstruction (v1) to multi-view reconstruction (v2 & v3).</p>
 
 </div>
 
-| | [SplatAnything · InfiniSplat v3](#infinisplat-v3) | [InfiniSplat v2 · Multi-view](#infinisplat-v2) | [InfiniSplat v1 · Single image / LiDAR](#infinisplat-v1) |
+| | [SplatAnything (InfiniSplat v3) · Any Views & Scales](#infinisplat-v3) | [InfiniSplat v2 · Any Views](#infinisplat-v2) | [InfiniSplat v1 · Single View](#infinisplat-v1) |
 | --- | --- | --- | --- |
-| Input | Multiple images across objects, indoor, street, and aerial scenes, with or without camera poses | Multiple images, with or without camera poses | One RGB image, optionally guided by LiDAR depth |
-| Explore | [Code and usage](https://github.com/zju3dv/SplatAnything) · [Project page](https://zju3dv.github.io/SplatAnything/) | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/akhaliq/InfiniSplat) |
+| Input | Arbitrary number of images across arbitrary scene scales, with or without camera poses | Arbitrary number of images, with or without camera poses | One RGB image, optionally guided by LiDAR depth |
+| Explore | [Code and usage](https://github.com/zju3dv/SplatAnything) ·[Live demo](https://huggingface.co/spaces/ritianyu/SplatAnything) | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/akhaliq/InfiniSplat) |
 
 ---
 
@@ -30,6 +30,9 @@
   </a>
   <a href="https://github.com/zju3dv/SplatAnything">
     <img src="https://img.shields.io/badge/Code-black?logo=github&logoColor=white" alt="SplatAnything source code">
+  </a>
+  <a href="https://huggingface.co/spaces/ritianyu/SplatAnything">
+    <img src="https://img.shields.io/badge/Demo-yellow?logo=huggingface&logoColor=white" alt="Hugging Face Demo">
   </a>
   <a href="https://huggingface.co/ritianyu/SplatAnything">
     <img src="https://img.shields.io/badge/Weights-yellow?logo=huggingface&logoColor=white" alt="SplatAnything weights">
@@ -59,7 +62,7 @@
 
 </div>
 
-SplatAnything (InfiniSplat v3) reconstructs 3D Gaussian scenes from multiple images across objects, indoor rooms, street scenes, and aerial views, with or without camera poses. Gaussian spacing normalization enables one model to work across arbitrary scenes. It also supports calibrated multi-camera rigs and 360° panorama reconstruction.
+SplatAnything (InfiniSplat v3) reconstructs 3D Gaussian scenes from multiple images across objects, indoor rooms, street scenes, and aerial views, with or without camera poses. Gaussian spacing normalization enables one model to work across arbitrary scenes. It also supports multi-camera rigs and 360° panorama reconstruction.
 
 [Code and usage](https://github.com/zju3dv/SplatAnything) · [Installation](https://github.com/zju3dv/SplatAnything#installation) · [Inference guide](https://github.com/zju3dv/SplatAnything/blob/main/docs/inference.md) · [Camera and panorama preparation](https://github.com/zju3dv/SplatAnything/blob/main/prepare_data.md) · [Citation](https://github.com/zju3dv/SplatAnything#citation)
 
@@ -198,7 +201,7 @@ V1 and v2 share the project license above. For SplatAnything (v3), refer to the 
 
 See the [v1 acknowledgments](InfiniSplat_v1/README.md#-acknowledgments), [v2 acknowledgments](InfiniSplat_v2/README.md#acknowledgments), and [SplatAnything (v3) acknowledgments](https://github.com/zju3dv/SplatAnything#acknowledgements).
 
-### Panorama to 3DGS (v2)
+### Panorama to 3DGS (v2 & v3)
 
 [Reconstruct a 360° panorama](InfiniSplat_v2/docs/panorama.md) with the included
 `small_empty_house` example. Inspired by [Enndee](https://github.com/Enndee).
