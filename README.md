@@ -8,7 +8,7 @@
 
 </div>
 
-| | [SplatAnything (InfiniSplat v3) · Any Views & Scales](#infinisplat-v3) | [InfiniSplat v2 · Any Views](#infinisplat-v2) | [InfiniSplat v1 · Single View](#infinisplat-v1) |
+| | [InfiniSplat v3 (SplatAnything) · Any Views & Scales](#infinisplat-v3) | [InfiniSplat v2 · Any Views](#infinisplat-v2) | [InfiniSplat v1 · Single View](#infinisplat-v1) |
 | --- | --- | --- | --- |
 | Input | Arbitrary number of images across arbitrary scene scales, with or without camera poses | Arbitrary number of images, with or without camera poses | One RGB image, optionally guided by LiDAR depth |
 | Explore | [Code and usage](https://github.com/zju3dv/SplatAnything) ·[Live demo](https://huggingface.co/spaces/ritianyu/SplatAnything) | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/akhaliq/InfiniSplat) |
@@ -19,7 +19,7 @@
 
 <div align="center">
 
-<h2>🌐 SplatAnything (InfiniSplat v3): Gaussian Spacing Normalization<br>for Feed-Forward 3DGS across Arbitrary Scenes</h2>
+<h2>🌐 InfiniSplat v3 (SplatAnything): Gaussian Spacing Normalization<br>for Feed-Forward 3DGS across Arbitrary Scenes</h2>
 
 <div align="center">
   <a href="https://zju3dv.github.io/SplatAnything/">
