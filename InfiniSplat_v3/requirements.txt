@@ -1,0 +1,10 @@
+# Inference and data preparation. Install a matching PyTorch build first; see README.md.
+torch>=2.4,<3
+numpy>=1.24,<2
+Pillow>=9.5
+opencv-python>=4.8,<4.12
+omegaconf>=2.3,<3
+safetensors>=0.4
+plyfile>=1.0,<1.1.3
+# Used by --sky_seg; the sky model weights are optional.
+onnxruntime>=1.17

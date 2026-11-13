@@ -8,10 +8,10 @@
 
 </div>
 
-| | [InfiniSplat v3 (SplatAnything) · Any Views & Scales](#infinisplat-v3) | [InfiniSplat v2 · Any Views](#infinisplat-v2) | [InfiniSplat v1 · Single View](#infinisplat-v1) |
+| | [InfiniSplat v3 (SplatAnything) · Any Views & Scenes](#infinisplat-v3) | [InfiniSplat v2 · Any Views](#infinisplat-v2) | [InfiniSplat v1 · Single View](#infinisplat-v1) |
 | --- | --- | --- | --- |
-| Input | Arbitrary number of images across arbitrary scene scales, with or without camera poses | Arbitrary number of images, with or without camera poses | One RGB image, optionally guided by LiDAR depth |
-| Explore | [Code and usage](https://github.com/zju3dv/SplatAnything) ·[Live demo](https://huggingface.co/spaces/ritianyu/SplatAnything) | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/akhaliq/InfiniSplat) |
+| Input | Arbitrary number of images across arbitrary scenes, with or without camera poses | Arbitrary number of images, with or without camera poses | One RGB image, optionally guided by LiDAR depth |
+| Explore | [Code and usage](InfiniSplat_v3/README.md) ·[Live demo](https://huggingface.co/spaces/ritianyu/SplatAnything) | [Code and usage](InfiniSplat_v2/README.md) · [Live demo](https://huggingface.co/spaces/Edisoneh/InfiniSplat2) | [Code and usage](InfiniSplat_v1/README.md) · [Live demo](https://huggingface.co/spaces/akhaliq/InfiniSplat) |
 
 ---
 
@@ -28,7 +28,7 @@
   <a href="https://arxiv.org/html/2611.08264">
     <img src="https://img.shields.io/badge/Paper-blue?logo=arxiv&logoColor=white" alt="SplatAnything paper on arXiv">
   </a>
-  <a href="https://github.com/zju3dv/SplatAnything">
+  <a href="https://github.com/zju3dv/InfiniSplat/tree/main/InfiniSplat_v3">
     <img src="https://img.shields.io/badge/Code-black?logo=github&logoColor=white" alt="SplatAnything source code">
   </a>
   <a href="https://huggingface.co/spaces/ritianyu/SplatAnything">
@@ -64,9 +64,8 @@
 
 SplatAnything (InfiniSplat v3) reconstructs 3D Gaussian scenes from multiple images across objects, indoor rooms, street scenes, and aerial views, with or without camera poses. Gaussian spacing normalization enables one model to work across arbitrary scenes. It also supports multi-camera rigs and 360° panorama reconstruction.
 
-[Code and usage](https://github.com/zju3dv/SplatAnything) · [Installation](https://github.com/zju3dv/SplatAnything#installation) · [Inference guide](https://github.com/zju3dv/SplatAnything/blob/main/docs/inference.md) · [Camera and panorama preparation](https://github.com/zju3dv/SplatAnything/blob/main/prepare_data.md) · [Citation](https://github.com/zju3dv/SplatAnything#citation)
+[Code and usage](InfiniSplat_v3/README.md) · [Installation](InfiniSplat_v3/README.md#installation) · [Inference guide](InfiniSplat_v3/docs/inference.md) · [Camera and panorama preparation](InfiniSplat_v3/docs/prepare_data.md) · [Citation](InfiniSplat_v3/README.md#citation)
 
-`InfiniSplat_v3` links to the [SplatAnything repository](https://github.com/zju3dv/SplatAnything) as a Git submodule; its source code is maintained there.
 
 ---
 
@@ -173,14 +172,14 @@ InfiniSplat v1 reconstructs 3D Gaussian scenes from a single RGB image, optional
 
 ## Getting started
 
-For SplatAnything (v3), initialize the submodule from the repository root, then follow the [SplatAnything installation guide](https://github.com/zju3dv/SplatAnything#installation):
+Clone the main repository, then follow the [v3 installation guide](InfiniSplat_v3/README.md#installation):
 
 ```bash
-git submodule update --init InfiniSplat_v3
-cd InfiniSplat_v3
+git clone https://github.com/zju3dv/InfiniSplat.git
+cd InfiniSplat/InfiniSplat_v3
 ```
 
-The submodule records a specific SplatAnything commit. You can also clone [SplatAnything](https://github.com/zju3dv/SplatAnything) directly to work with its latest code.
+All three versions are included as ordinary directories; no submodule initialization is needed.
 
 For v2, run `cd InfiniSplat_v2`; for v1, run `cd InfiniSplat_v1`. Follow the selected version's installation guide. Install each version in its own Python environment; their dependencies and weights differ.
 
@@ -195,11 +194,11 @@ Project use by companies, universities, or other organizations is free but requi
 **Project use registration and Word template:** [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSff5QjjANlJ2hnXYqBSAzKWxEM58gIxPLh17-t3j3-MqO1a5w/viewform)
 
 
-V1 and v2 share the project license above. For SplatAnything (v3), refer to the [SplatAnything repository](https://github.com/zju3dv/SplatAnything) for its license and usage terms. Third-party components retain their respective licenses and notices; see [v2 component provenance](InfiniSplat_v2/THIRD_PARTY.md).
+v1, v2 and v3 share the project license above. Third-party components retain their respective licenses and notices; see [v2 component provenance](InfiniSplat_v2/THIRD_PARTY.md).
 
 ## Acknowledgments
 
-See the [v1 acknowledgments](InfiniSplat_v1/README.md#-acknowledgments), [v2 acknowledgments](InfiniSplat_v2/README.md#acknowledgments), and [SplatAnything (v3) acknowledgments](https://github.com/zju3dv/SplatAnything#acknowledgements).
+See the [v1 acknowledgments](InfiniSplat_v1/README.md#-acknowledgments), [v2 acknowledgments](InfiniSplat_v2/README.md#acknowledgments), and [v3 acknowledgments](InfiniSplat_v3/README.md#acknowledgements).
 
 ### Panorama to 3DGS (v2 & v3)
 

@@ -1,0 +1,14 @@
+# Inference defaults for the supplied 0.002-voxel fine-tuned stage-1 checkpoint.
+# Weight paths stay portable; local symlinks or environment variables select files.
+wrapper:
+  worldmirror2_pretrained: checkpoints/worldmirror2.safetensors
+  SplatAnything_pretrained: checkpoints/SplatAnything.ckpt
+  enable_cond: false
+  infer_opacity_thresh: 0.05
+  model:
+    use_gt_camera: false
+    filter_flying_points_infer: false
+    filter_large_scale_infer: true
+    max_scale_abs: null
+    max_scale_pct: 99.8
+    gs_voxel_size: 0.002

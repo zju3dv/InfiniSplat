@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="32" viewBox="0 0 110 32" role="img" aria-label="Paper">
+  <title>Paper</title>
+  <rect x="0.5" y="0.5" width="109" height="31" rx="7" fill="#17212f" stroke="#334155"/>
+  <g fill="none" stroke="#7db3ff" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 7h8l5 5v13H11zM19 7v5h5M14 16h7M14 19h7M14 22h4"/>
+  </g>
+  <text x="34" y="20" fill="#f8fafc" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600">Paper</text>
+  <path d="M87 20l8-8m-7 0h7v7" fill="none" stroke="#7db3ff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

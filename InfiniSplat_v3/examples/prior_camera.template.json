@@ -1,0 +1,24 @@
+{
+  "note": "Schema example for two 1920x1080 images. Replace filenames, poses, and intrinsics with your own calibration; these values are not an estimated camera solution.",
+  "num_cameras": 2,
+  "extrinsics": [
+    {
+      "camera_id": "000",
+      "matrix": [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+    },
+    {
+      "camera_id": "001",
+      "matrix": [[1, 0, 0, 1], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+    }
+  ],
+  "intrinsics": [
+    {
+      "camera_id": "000",
+      "matrix": [[1000, 0, 960], [0, 1000, 540], [0, 0, 1]]
+    },
+    {
+      "camera_id": "001",
+      "matrix": [[1000, 0, 960], [0, 1000, 540], [0, 0, 1]]
+    }
+  ]
+}
