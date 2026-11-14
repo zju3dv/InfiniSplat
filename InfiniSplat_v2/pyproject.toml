@@ -16,6 +16,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+refiner = ["gsplat==1.5.3"]
 panorama = ["opencv-python-headless>=4.8,<4.12"]
 
 [project.scripts]

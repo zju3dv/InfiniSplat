@@ -63,15 +63,18 @@ class Pipeline:
     def __call__(self, images, **kwargs):
         return self.reconstruct(images, **kwargs)
 
-    def __init__(self, model, config, device):
+    def __init__(self, model, config, device, refiner=None):
         if isinstance(model, InfiniSplat):
             model.configure_inference()
         self.model=model.eval().requires_grad_(False).to(device)
         self.config=config
         self.device=torch.device(device)
+        self.refiner_source=refiner
+        self._refiner=None
+        self._refiner_config=None
 
     @classmethod
-    def from_pretrained(cls, directory, device='cuda:0'):
+    def from_pretrained(cls, directory, device='cuda:0', *, refiner=None):
         path=Path(directory)
         if not path.is_dir():
             from huggingface_hub import snapshot_download
@@ -93,11 +96,21 @@ class Pipeline:
         state=load_file(str(path/'model.safetensors'))
         state=expand_aliases(state, cfg.get('tensor_aliases', {}))
         model.load_state_dict(state,strict=True,assign=True)
-        return cls(model,cfg,device)
+        return cls(model,cfg,device,refiner=refiner)
 
     @torch.inference_mode()
     def reconstruct(self, images, cameras=None, long_side=518, max_views=12, pose_mode=None,
-                    panorama_shared_center=False):
+                    panorama_shared_center=False, refinement_steps=None):
+        steps = (3 if self.refiner_source is not None else 0) if refinement_steps is None else refinement_steps
+        if isinstance(steps, bool) or not isinstance(steps, int) or not 0 <= steps <= 3:
+            raise ValueError('refinement_steps must be an integer from 0 to 3')
+        if steps and self.refiner_source is None:
+            raise ValueError('Positive refinement_steps requires a refiner bundle')
+        if steps and panorama_shared_center:
+            raise ValueError('Refinement is not supported for shared-center panorama reconstruction')
+        if steps and self._refiner is None:
+            from .refinement.loader import load_refiner
+            self._refiner, self._refiner_config = load_refiner(self.refiner_source, self.config, self.device)
         images = list(images)
         pose_mode = pose_mode or ('provided' if cameras is not None else 'da3-pose')
         if pose_mode not in ('provided', 'da3-pose', 'pose-free'):
@@ -127,7 +140,21 @@ class Pipeline:
             prior = dict(c2w=pose_tensor[0].detach().cpu().clone(),
                          intrinsics=K_tensor[0].detach().cpu().clone())
         kwargs = {'panorama_shared_center': True} if panorama_shared_center else {}
+        if steps:
+            kwargs['feature_projector'] = self._refiner.project
         result=self.model(pixels_device, pose_tensor, K_tensor, **kwargs)
+        if steps:
+            # Local autograd feedback requires ordinary tensors, including when
+            # the caller itself is in inference_mode. No network parameter trains.
+            with torch.inference_mode(False), torch.no_grad(), torch.autocast(device_type=self.device.type, enabled=False):
+                features = result.pop('refine_features').detach().clone().float()
+                splats = {k: v.detach().clone().float() for k,v in result['splats'].items()}
+                refined = self._refiner.refiner(splats, features, pixels_device.detach().clone().float()[0],
+                    result['c2w'].detach().clone().float(), result['intrinsics'].detach().clone().float(),
+                    result['stats']['voxel_size'], steps=steps)
+                if not torch.equal(refined['means'], result['splats']['means']):
+                    raise RuntimeError('Fixed-center refinement changed Gaussian centers')
+                result['splats'] = refined
         result['images']=pixels[0]
         result['metadata']=dict(backend=self.config['backend'],
              weights_sha256=self.config['weights_sha256'],
@@ -136,6 +163,13 @@ class Pipeline:
              inputs=records,space='rdnorm_first_camera_relative',stats=result['stats'],
              record_class='diagnostic',max_gaussians=0,
              note='Interactive reconstruction metadata.')
+        if steps:
+            result['metadata']['refinement'] = dict(
+                architecture=self._refiner_config['architecture'],
+                checkpoint_identity=self._refiner_config['checkpoint_identity'],
+                weights_sha256=self._refiner_config['weights_sha256'],
+                steps=steps, feedback_context_views=min(8, len(images)),
+                camera_source='effective_unprojection_cameras', fixed_centers=True)
         if panorama_shared_center:
             result['metadata']['panorama'] = dict(
                 scale_status='non_identifiable', translation_scale=None,

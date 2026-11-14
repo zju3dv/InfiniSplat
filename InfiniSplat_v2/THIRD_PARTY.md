@@ -19,3 +19,6 @@ PlayCanvas splat-transform is installed separately for optional HTML viewing.
 
 Model weights are downloaded separately using the instructions in `INSTALL.md`.
 For example data sources and terms, see `examples/NOTICE.md`.
+
+SH0 conversion helpers in `refinement/parameters.py` retain the PlenOctree
+authors' BSD notice. Optional rendering uses gsplat (Apache-2.0).

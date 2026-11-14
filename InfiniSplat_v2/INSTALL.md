@@ -105,3 +105,10 @@ Install [COLMAP](https://colmap.github.io/install.html) separately and check
 `colmap -h`. TXT camera inputs do not require COLMAP at inference time. Preparing
 camera estimates or converting BIN models requires the `colmap` executable.
 See [the camera workflow](docs/colmap.md).
+
+## Optional refiner
+
+Install `pip install '.[refiner]'` and place the separate `config.json` and
+`refiner.safetensors` bundle in `weights/refiner/`. The unchanged base weights are
+still required. See [optional refinement](docs/refinement.md) for setup and usage.
+Use `--refiner weights/refiner` to enable refinement.

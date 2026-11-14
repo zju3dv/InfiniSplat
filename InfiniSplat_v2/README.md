@@ -107,3 +107,15 @@ Convert a full equirectangular panorama into a native Gaussian scene with
 `infinisplat-panorama`. See the [panorama guide](docs/panorama.md) for installation
 and the included `small_empty_house` example. This workflow was inspired by
 [Enndee](https://github.com/Enndee).
+
+## Optional refinement
+
+Refinement is optional. To enable it:
+
+```bash
+pip install '.[refiner]'
+infinisplat --model weights/da3 --refiner weights/refiner \
+  --images-dir images --output result_refined --no-html
+```
+
+See [optional refinement](docs/refinement.md) for setup and usage.

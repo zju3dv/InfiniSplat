@@ -178,7 +178,8 @@ class InfiniSplat(nn.Module):
         return tokens, 0, depth, effective_c2w, effective_K, radius
 
     @torch.inference_mode()
-    def forward(self, images, c2w=None, intrinsics=None, *, panorama_shared_center=False):
+    def forward(self, images, c2w=None, intrinsics=None, *, panorama_shared_center=False,
+                feature_projector=None):
         if images.ndim != 5 or images.shape[0]!=1 or images.shape[2]!=3:
             raise ValueError('Expected RGB tensor [1,views,3,height,width]')
         if (c2w is None)!=(intrinsics is None):
@@ -194,8 +195,11 @@ class InfiniSplat(nn.Module):
                 images,c2w,intrinsics,panorama_shared_center=panorama_shared_center)
             # Avoid retaining dense 128-channel features for every view.
             parts=[]
+            projected=[] if feature_projector is not None else None
             for i in range(images.shape[1]):
                 features=self.gs_feature_head.forward_chunk(tokens,images,start,i,i+1)
+                if projected is not None:
+                    projected.append(feature_projector(features))
                 parts.append(self.gaussian_head(features,images[:,i:i+1],depth[:,i:i+1].clamp_min(1e-6),poses[:,i:i+1],K[:,i:i+1]))
             raw={key:torch.cat([p[key] for p in parts],0) for key in parts[0]}
         # Preserve the native batched FP32 unprojection kernel, including its
@@ -204,7 +208,19 @@ class InfiniSplat(nn.Module):
         with torch.autocast(device_type=images.device.type,enabled=False):
             points,_,_=depth_to_world_coords_points(depth[0].float(),poses[0].float(),K[0].float())
             raw['means']=points.reshape(-1,3)
-        splats,stats=merge(raw)
+        extra = {}
+        if projected is None:
+            splats,stats=merge(raw)
+        else:
+            splats,stats,membership=merge(raw, return_membership=True)
+            features = torch.cat(projected, 0)[membership['keep']]
+            counts = membership['counts']
+            if len(features) != len(membership['inverse']):
+                raise RuntimeError('Feature rows do not match native merge membership')
+            merged = features.new_zeros(len(counts), 8).index_add_(0, membership['inverse'], features)
+            extra['refine_features'] = (merged / counts[:, None])[membership['visible']]
+            if len(extra['refine_features']) != len(splats['means']):
+                raise RuntimeError('Feature rows do not match visible merged Gaussians')
         return dict(splats=splats,raw_points=raw['means'],raw_rgb=raw['base_rgb'],
                     c2w=poses[0].float(),intrinsics=K[0].float(),stats=stats,
-                    radius=radius,depth=depth)
+                    radius=radius,depth=depth,**extra)

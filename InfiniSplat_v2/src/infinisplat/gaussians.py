@@ -21,7 +21,7 @@ class GaussianHead(nn.Module):
                     sh=(((rgb - .5) / SH_C0).to(sh.dtype) + sh)[:, None], base_rgb=rgb)
 
 @torch.no_grad()
-def merge(splats):
+def merge(splats, *, return_membership=False):
     """Median uses lower-middle torch.median; no quantile approximation or cap."""
     keep = torch.ones(len(splats['means']), dtype=torch.bool, device=splats['means'].device)
     for key in ('means','quats','scales','opacities','sh'):
@@ -57,7 +57,10 @@ def merge(splats):
     result = {k:v[visible] for k,v in merged.items()}
     if not visible.any():
         raise ValueError('No Gaussians remain after native opacity pruning')
-    return result, dict(raw_count=len(keep), valid_count=int(keep.sum()),
+    stats = dict(raw_count=len(keep), valid_count=int(keep.sum()),
                         merged_count=len(unique), final_count=int(visible.sum()),
                         median_scale=float(median), voxel_size=float(voxel),
                         voxel_multiplier=1.4, opacity_threshold=.01)
+    if return_membership:
+        return result, stats, dict(keep=keep, inverse=inverse, counts=counts, visible=visible)
+    return result, stats
