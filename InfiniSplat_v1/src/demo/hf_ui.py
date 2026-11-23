@@ -618,7 +618,7 @@ body {
 
 
 def _gradio_file_url(path: Path) -> str:
-    encoded_path = quote(str(path.resolve()), safe="/")
+    encoded_path = quote(path.resolve().as_posix(), safe="/:")
     return html.escape(f"/gradio_api/file={encoded_path}", quote=True)
 
 
